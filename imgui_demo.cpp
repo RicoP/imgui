@@ -580,7 +580,9 @@ void ImGui::ShowTestWindow(bool* p_open)
 
         const char* items[] = { "AAAA", "BBBB", "CCCC", "DDDD", "EEEE", "FFFF", "GGGG", "HHHH", "IIII", "JJJJ", "KKKK" };
         static int item2 = -1;
-        ImGui::Combo("combo scroll", &item2, items, IM_ARRAYSIZE(items));   // Combo using proper array. You can also pass a callback to retrieve array value, no need to create/copy an array just for that.
+        if (ImGui::Combo("combo scroll", &item2, items, IM_ARRAYSIZE(items))) { // Combo using proper array. You can also pass a callback to retrieve array value, no need to create/copy an array just for that.
+          printf("Selected item %s\n", items[item2]);
+        }
 
         {
             static char str0[128] = "Hello, world!";
